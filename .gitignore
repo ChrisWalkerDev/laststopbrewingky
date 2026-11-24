@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Build and test output
+dist/
+coverage/
+apps/*/dist/
+.angular/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+.dev.vars
+
+# Editors and OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Cloudflare local state
+.wrangler/

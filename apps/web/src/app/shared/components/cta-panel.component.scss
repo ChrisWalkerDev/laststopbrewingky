@@ -1,0 +1,33 @@
+.cta-panel {
+  padding-block: var(--space-9);
+  background: var(--color-brand-primary);
+  color: var(--color-text-inverse);
+}
+
+.cta-panel__inner {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-7);
+}
+
+h2 {
+  max-width: 18ch;
+  margin-block: var(--space-2) var(--space-3);
+}
+
+p:not(.eyebrow) {
+  max-width: 38rem;
+  color: var(--color-text-inverse);
+}
+
+.eyebrow {
+  color: inherit;
+}
+
+@media (max-width: 44rem) {
+  .cta-panel__inner {
+    align-items: start;
+    flex-direction: column;
+  }
+}

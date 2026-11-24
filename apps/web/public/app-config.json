@@ -1,0 +1,9 @@
+{
+  "apiBaseUrl": "/api",
+  "environment": "local",
+  "contact": {
+    "mode": "mock",
+    "endpoint": "",
+    "mockFailure": false
+  }
+}

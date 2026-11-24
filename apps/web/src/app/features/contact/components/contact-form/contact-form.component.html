@@ -1,0 +1,106 @@
+<form class="contact-form" [formGroup]="form" novalidate (ngSubmit)="submit()">
+  <div class="name-grid">
+    <div class="field">
+      <label for="contact-first-name">First name</label>
+      <input
+        id="contact-first-name"
+        type="text"
+        autocomplete="given-name"
+        formControlName="firstName"
+        [attr.maxlength]="limits.firstName"
+        [attr.aria-invalid]="hasError('firstName') || null"
+        aria-describedby="first-name-error"
+      />
+      @if (hasError('firstName')) {
+        <p id="first-name-error" class="field-error">{{ fieldError('firstName') }}</p>
+      }
+    </div>
+
+    <div class="field">
+      <label for="contact-last-name">Last name</label>
+      <input
+        id="contact-last-name"
+        type="text"
+        autocomplete="family-name"
+        formControlName="lastName"
+        [attr.maxlength]="limits.lastName"
+        [attr.aria-invalid]="hasError('lastName') || null"
+        aria-describedby="last-name-error"
+      />
+      @if (hasError('lastName')) {
+        <p id="last-name-error" class="field-error">{{ fieldError('lastName') }}</p>
+      }
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="contact-email">Email</label>
+    <input
+      id="contact-email"
+      type="email"
+      autocomplete="email"
+      formControlName="email"
+      [attr.maxlength]="limits.email"
+      [attr.aria-invalid]="hasError('email') || null"
+      aria-describedby="email-error"
+    />
+    @if (hasError('email')) {
+      <p id="email-error" class="field-error">{{ fieldError('email') }}</p>
+    }
+  </div>
+
+  <div class="field">
+    <label for="contact-phone"> Phone <span class="optional">(optional)</span> </label>
+    <input
+      id="contact-phone"
+      type="tel"
+      autocomplete="tel"
+      formControlName="phone"
+      [attr.maxlength]="limits.phone"
+      [attr.aria-invalid]="hasError('phone') || null"
+      aria-describedby="phone-error"
+    />
+    @if (hasError('phone')) {
+      <p id="phone-error" class="field-error">{{ fieldError('phone') }}</p>
+    }
+  </div>
+
+  <div class="field">
+    <div class="label-row">
+      <label for="contact-message">Message</label>
+      <span aria-hidden="true">{{ form.controls.message.value.length }}/{{ limits.message }}</span>
+    </div>
+    <textarea
+      id="contact-message"
+      rows="7"
+      formControlName="message"
+      [attr.maxlength]="limits.message"
+      [attr.aria-invalid]="hasError('message') || null"
+      aria-describedby="message-help message-error"
+    ></textarea>
+    <p id="message-help" class="field-help">Maximum {{ limits.message }} characters.</p>
+    @if (hasError('message')) {
+      <p id="message-error" class="field-error">{{ fieldError('message') }}</p>
+    }
+  </div>
+
+  <div class="submission-row">
+    <button class="button" type="submit" [disabled]="form.invalid || submitting()">
+      {{ submitting() ? 'Sending message…' : 'Send message' }}
+    </button>
+    <p class="required-note">Fields other than phone are required.</p>
+  </div>
+
+  <div class="feedback-region" aria-live="polite" aria-atomic="true">
+    @if (successMessage()) {
+      <p class="feedback feedback--success" role="status">
+        {{ successMessage() }}
+      </p>
+    }
+    @if (errorMessage()) {
+      <p class="feedback feedback--error" role="alert">
+        {{ errorMessage() }}
+      </p>
+    }
+  </div>
+</form>

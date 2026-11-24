@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "laststopbrewingky-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-23",
+  "vars": {
+    "ENVIRONMENT": "local",
+    "ALLOWED_ORIGINS": "http://localhost:4200",
+  },
+  "observability": {
+    "enabled": true,
+  },
+}

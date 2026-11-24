@@ -1,0 +1,72 @@
+<section class="about-hero" aria-labelledby="about-title">
+  <div class="about-hero__art" aria-hidden="true"></div>
+  <div class="page-shell about-hero__content">
+    <p class="eyebrow">The people behind the pour</p>
+    <h1 id="about-title">About Us</h1>
+    <p class="about-hero__lede">
+      Great beer starts with great people. Meet the team behind our brewery — the owners and the
+      people who bring everything together, from the day-to-day running of the brewery to the beer
+      in your glass.
+    </p>
+    <div class="about-hero__values" aria-label="Our focus">
+      <span>Ownership</span>
+      <span>Teamwork</span>
+      <span>Craft</span>
+      <span>Passion</span>
+    </div>
+  </div>
+</section>
+
+<section class="section owners-section" aria-labelledby="owners-title">
+  <div class="page-shell">
+    <header class="section-intro">
+      <div>
+        <p class="eyebrow">Meet the owners</p>
+        <h2 id="owners-title">The People Behind the Brewery</h2>
+      </div>
+      <p>Meet the four co-owners behind Last Stop Brewing.</p>
+    </header>
+
+    <div class="team-grid team-grid--owners">
+      @for (owner of owners; track owner.id) {
+        <lsb-team-member-card [member]="owner" />
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section brewery-team-section" aria-labelledby="team-title">
+  <div class="page-shell">
+    <header class="section-intro section-intro--inverse">
+      <div>
+        <p class="eyebrow">Day to day</p>
+        <h2 id="team-title">Meet the Team</h2>
+      </div>
+      <p>
+        The people who help keep the brewery running and the beer moving from the brewhouse to your
+        glass.
+      </p>
+    </header>
+
+    <div class="team-grid team-grid--operations">
+      @for (member of breweryTeam; track member.id) {
+        <lsb-team-member-card [member]="member" />
+      }
+    </div>
+  </div>
+</section>
+
+<section class="about-closing" aria-labelledby="closing-title">
+  <div class="page-shell about-closing__inner">
+    <div class="about-closing__mark" aria-hidden="true">LSB</div>
+    <div class="about-closing__copy">
+      <p class="eyebrow">Pull up a chair</p>
+      <h2 id="closing-title">Come and Meet Us</h2>
+      <p>
+        Whether you're stopping by for a beer, joining us for an event or simply getting to know the
+        brewery, we'd love to welcome you.
+      </p>
+      <a class="button button--light" routerLink="/visit">Visit Us</a>
+    </div>
+  </div>
+</section>

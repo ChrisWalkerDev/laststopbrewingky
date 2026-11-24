@@ -1,0 +1,30 @@
+# Cloudflare Pages _headers starter template.
+# Copy/adapt to the deployed site's public/_headers or configured build output.
+# Confirm the actual output directory and Pages deployment mode first.
+
+ /*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  X-Frame-Options: DENY
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.example.com; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=31536000
+
+# Optional: apply stronger caching to fingerprinted static assets after confirming
+# the Angular build emits content-hashed filenames.
+# /assets/*
+#   Cache-Control: public, max-age=31536000, immutable
+
+# IMPORTANT:
+# - Replace https://api.example.com with the exact API origins actually used.
+# - HSTS max-age=31536000 is appropriate only after HTTPS is reliable on every
+#   affected hostname. Add includeSubDomains only if every subdomain supports HTTPS.
+# - Do not add preload casually; it has long-lived operational consequences.
+# - 'unsafe-inline' in style-src is a compatibility compromise some Angular/UI
+#   setups need. Test whether it can be removed or replaced with hashes/nonces.
+# - script-src 'self' may need adjustment for SSR, inline bootstrap code, analytics,
+#   or other integrations. Prefer hashes/nonces over 'unsafe-inline'.
+# - CSP is application-specific. Test in report-only mode first where practical,
+#   inspect violations, then enforce. Do not blindly deploy this policy.
+# - X-Frame-Options is retained for compatibility; frame-ancestors is the modern
+#   CSP control. Adjust both if legitimate framing is required.

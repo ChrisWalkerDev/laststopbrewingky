@@ -1,0 +1,19 @@
+.skip-link {
+  left: 1rem;
+  padding: 0.75rem 1rem;
+  position: fixed;
+  top: -5rem;
+  z-index: 100;
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-brand-light);
+  color: var(--color-brand-dark);
+  border-radius: 0.25rem;
+
+  &:focus {
+    top: 1rem;
+  }
+}
+
+main {
+  min-height: calc(100dvh - 10rem);
+}

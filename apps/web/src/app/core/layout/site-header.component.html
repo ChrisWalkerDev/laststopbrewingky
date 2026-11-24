@@ -1,0 +1,42 @@
+<header class="site-header">
+  <div class="page-shell header-inner">
+    <a class="brand" routerLink="/" aria-label="Last Stop Brewing home" (click)="closeNavigation()">
+      <span class="brand-mark" aria-hidden="true">LS</span>
+      <span class="brand-copy">
+        <span>Last Stop</span>
+        <strong>Brewing</strong>
+      </span>
+    </a>
+
+    <button
+      class="nav-toggle"
+      type="button"
+      [attr.aria-expanded]="navigationOpen()"
+      aria-controls="primary-navigation"
+      (click)="toggleNavigation()"
+    >
+      <span class="sr-only">Toggle primary navigation</span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+
+    <nav
+      id="primary-navigation"
+      class="primary-navigation"
+      [class.primary-navigation--open]="navigationOpen()"
+      aria-label="Primary navigation"
+    >
+      @for (item of navigation; track item.path) {
+        <a
+          [routerLink]="item.path"
+          routerLinkActive="is-active"
+          [routerLinkActiveOptions]="{ exact: item.exact ?? false }"
+          (click)="closeNavigation()"
+        >
+          {{ item.label }}
+        </a>
+      }
+    </nav>
+  </div>
+</header>

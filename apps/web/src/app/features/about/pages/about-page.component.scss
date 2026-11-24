@@ -1,0 +1,213 @@
+.about-hero {
+  overflow: hidden;
+  position: relative;
+  min-height: clamp(35rem, 72dvh, 48rem);
+  color: var(--color-text-inverse);
+  background: var(--color-brand-dark);
+  isolation: isolate;
+}
+
+.about-hero__art {
+  position: absolute;
+  z-index: -1;
+  inset: 0 0 0 45%;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(
+      90deg,
+      var(--color-brand-dark),
+      color-mix(in srgb, var(--color-brand-dark) 78%, transparent) 28%,
+      transparent 68%
+    ),
+    linear-gradient(
+      135deg,
+      var(--color-brand-dark) 0 30%,
+      var(--color-brand-primary) 30% 53%,
+      color-mix(in srgb, var(--color-brand-primary) 55%, var(--color-brand-dark)) 53% 72%,
+      var(--color-brand-dark) 72%
+    );
+}
+
+.about-hero__content {
+  display: flex;
+  min-height: inherit;
+  justify-content: center;
+  padding-block: var(--space-9);
+  flex-direction: column;
+}
+
+.about-hero .eyebrow {
+  color: var(--color-brand-light);
+}
+
+.about-hero h1 {
+  max-width: 8ch;
+  margin-block: var(--space-3) var(--space-5);
+}
+
+.about-hero__lede {
+  max-width: 41rem;
+  margin-bottom: 0;
+  color: var(--color-text-inverse-muted);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+}
+
+.about-hero__values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  margin-top: var(--space-7);
+}
+
+.about-hero__values span {
+  padding-top: var(--space-2);
+  border-top: 0.2rem solid var(--color-brand-primary);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.section-intro {
+  display: grid;
+  align-items: end;
+  gap: var(--space-7);
+  margin-bottom: var(--space-7);
+  grid-template-columns: minmax(0, 1.3fr) minmax(18rem, 0.7fr);
+}
+
+.section-intro h2 {
+  max-width: 13ch;
+  margin-block: var(--space-2) 0;
+}
+
+.section-intro > p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 1.05rem;
+}
+
+.team-grid {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.team-grid--owners {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.brewery-team-section {
+  color: var(--color-text-inverse);
+  background: var(--color-brand-dark);
+}
+
+.section-intro--inverse .eyebrow {
+  color: var(--color-text-inverse);
+}
+
+.section-intro--inverse > p {
+  color: var(--color-text-inverse-muted);
+}
+
+.team-grid--operations {
+  max-width: 52rem;
+  margin-inline: auto;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.about-closing {
+  border-top: 0.45rem solid var(--color-brand-primary);
+  background: var(--color-brand-primary);
+  color: var(--color-text-inverse);
+}
+
+.about-closing__inner {
+  display: grid;
+  min-height: 26rem;
+  align-items: center;
+  gap: var(--space-8);
+  padding-block: var(--space-8);
+  grid-template-columns: 0.65fr 1.35fr;
+}
+
+.about-closing__mark {
+  color: color-mix(in srgb, var(--color-brand-light) 18%, transparent);
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 18vw, 13rem);
+  font-weight: 700;
+  line-height: 0.8;
+  letter-spacing: -0.08em;
+}
+
+.about-closing__copy {
+  max-width: 42rem;
+}
+
+.about-closing .eyebrow {
+  color: inherit;
+}
+
+.about-closing h2 {
+  margin-block: var(--space-2) var(--space-4);
+}
+
+.about-closing__copy > p:not(.eyebrow) {
+  max-width: 36rem;
+  font-size: 1.08rem;
+}
+
+.about-closing .button {
+  margin-top: var(--space-5);
+}
+
+@media (max-width: 62rem) {
+  .team-grid--owners {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .section-intro {
+    grid-template-columns: 1fr;
+  }
+
+  .section-intro > p {
+    max-width: 38rem;
+  }
+}
+
+@media (max-width: 42rem) {
+  .about-hero {
+    min-height: 40rem;
+  }
+
+  .about-hero__art {
+    left: 30%;
+    opacity: 0.62;
+  }
+
+  .about-hero__lede {
+    max-width: 30rem;
+  }
+
+  .team-grid {
+    gap: var(--space-6);
+  }
+
+  .team-grid--owners,
+  .team-grid--operations,
+  .about-closing__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .team-grid--operations {
+    max-width: 25rem;
+  }
+
+  .about-closing__inner {
+    gap: var(--space-5);
+  }
+
+  .about-closing__mark {
+    font-size: 5rem;
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "name": "laststopbrewingky",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "libs/*"
+  ],
+  "packageManager": "npm@11.12.1",
+  "engines": {
+    "node": ">=24.15.0"
+  },
+  "scripts": {
+    "start": "npm run start --workspace web",
+    "start:api": "npm run dev --workspace @laststop/api",
+    "build": "npm run build:web && npm run build:api",
+    "build:web": "npm run build --workspace web",
+    "build:web:cloudflare": "npm run build:web && node apps/web/scripts/configure-runtime.mjs",
+    "build:api": "npm run build --workspace @laststop/api",
+    "test": "npm run test:web && npm run test:api",
+    "test:web": "npm run test --workspace web -- --watch=false",
+    "test:api": "npm run test --workspace @laststop/api",
+    "typecheck": "tsc -p libs/contracts/tsconfig.json --noEmit && tsc -p apps/api/tsconfig.json --noEmit && tsc -p apps/web/tsconfig.app.json --noEmit && tsc -p apps/web/tsconfig.spec.json --noEmit",
+    "lint": "eslint \"apps/*/src/**/*.ts\" \"libs/*/src/**/*.ts\"",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "architecture:check": "depcruise --config architecture/dependency-cruiser.cjs apps/web/src apps/api/src libs/contracts/src",
+    "security:check": "npm audit --audit-level=high",
+    "quality:check": "npm run format:check && npm run lint && npm run typecheck && npm run architecture:check && npm run test && npm run build"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261124.1",
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.6.6",
+    "angular-eslint": "^22.8.0",
+    "dependency-cruiser": "^18.9.0",
+    "eslint": "^10.15.0",
+    "prettier": "^3.10.1",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.0.0",
+    "vitest": "^5.0.0",
+    "wrangler": "^4.167.0"
+  }
+}

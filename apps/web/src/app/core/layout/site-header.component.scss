@@ -1,0 +1,129 @@
+.site-header {
+  position: relative;
+  z-index: 20;
+  border-bottom: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-surface) 94%, transparent);
+  backdrop-filter: blur(12px);
+}
+
+.header-inner {
+  display: flex;
+  min-height: 5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: grid;
+  width: 2.65rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  color: var(--color-accent);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.brand-copy {
+  display: grid;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.brand-copy span {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+}
+
+.brand-copy strong {
+  margin-top: 0.3rem;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  letter-spacing: 0.03em;
+}
+
+.primary-navigation {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.4vw, 2rem);
+}
+
+.primary-navigation > a:not(.button) {
+  padding-block: 0.5rem;
+  position: relative;
+  color: var(--color-text-secondary);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.primary-navigation > a.is-active:not(.button) {
+  color: var(--color-accent);
+}
+
+.primary-navigation > a.is-active:not(.button)::after,
+.primary-navigation > a:not(.button):hover::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--color-accent);
+  content: '';
+}
+
+.primary-navigation > a:not(.button):hover {
+  color: var(--color-text-primary);
+}
+
+.nav-toggle {
+  display: none;
+  width: 3rem;
+  height: 3rem;
+  padding: 0.7rem;
+  border: 1px solid var(--color-border-strong);
+  background: transparent;
+}
+
+.nav-toggle > span:not(.sr-only) {
+  display: block;
+  height: 2px;
+  margin-block: 5px;
+  background: currentColor;
+}
+
+@media (max-width: 56rem) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .primary-navigation {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    display: none;
+    align-items: stretch;
+    padding: var(--space-5);
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-medium);
+    flex-direction: column;
+  }
+
+  .primary-navigation--open {
+    display: flex;
+  }
+}

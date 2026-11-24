@@ -1,0 +1,54 @@
+.site-footer {
+  padding-block: var(--space-9);
+  border-top: 0.35rem solid var(--color-accent);
+  background: var(--color-background-dark);
+  color: var(--color-text-inverse);
+}
+
+.footer-grid {
+  display: grid;
+  gap: var(--space-7);
+  grid-template-columns: minmax(0, 1.5fr) 1fr 1fr;
+}
+
+.footer-brand {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.footer-note {
+  max-width: 32rem;
+  color: var(--color-text-inverse-muted);
+}
+
+nav,
+.footer-meta {
+  display: grid;
+  align-content: start;
+  gap: 0.75rem;
+}
+
+a {
+  color: var(--color-text-inverse);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25rem;
+}
+
+a:hover {
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 3px;
+}
+
+.footer-meta {
+  color: var(--color-text-inverse-muted);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 44rem) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}

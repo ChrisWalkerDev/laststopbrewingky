@@ -1,0 +1,14 @@
+{
+  "name": "@laststop/api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "build": "wrangler deploy --dry-run --outdir dist",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@laststop/contracts": "0.0.0"
+  }
+}

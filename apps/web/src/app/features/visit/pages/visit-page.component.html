@@ -1,0 +1,72 @@
+<lsb-page-hero
+  eyebrow="Visit us"
+  title="Your next stop starts here."
+  description="Find the brewery’s location, plan around verified opening hours, and get the practical details you need before heading out."
+/>
+
+<section class="section">
+  <div class="page-shell visit-grid">
+    <div class="location-card">
+      <p class="eyebrow">Brewery location</p>
+      <h2>{{ content.location.name }}</h2>
+      <address>
+        @for (line of content.location.address; track line) {
+          <span>{{ line }}</span>
+        }
+      </address>
+      <p>{{ content.location.description }}</p>
+      <a class="button" [href]="content.location.mapUrl" target="_blank" rel="noopener noreferrer">
+        Find us on the map
+        <span class="sr-only">(opens in a new tab)</span>
+      </a>
+      <p class="verification-note">The map opens the brewery’s full address in a new tab.</p>
+    </div>
+
+    <div class="hours-panel">
+      <lsb-section-heading
+        eyebrow="Opening hours"
+        title="Make time for the stop."
+        description="Plan your visit around the brewery’s regular weekly hours."
+      />
+
+      <dl class="hours-list">
+        @for (hour of content.hours; track hour.day) {
+          <div [class.hours-list__today]="hour.dayIndex === today">
+            <dt>
+              {{ hour.day }}
+              @if (hour.dayIndex === today) {
+                <span class="today-label">Today</span>
+              }
+            </dt>
+            <dd>{{ hoursLabel(hour) }}</dd>
+            @if (hour.notice) {
+              <dd class="hour-notice">{{ hour.notice }}</dd>
+            }
+          </div>
+        }
+      </dl>
+      <p class="hours-notice">{{ content.hoursNotice }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="section visitor-information">
+  <div class="page-shell information-grid">
+    <article>
+      <p class="eyebrow">Parking</p>
+      <h2>Before you arrive</h2>
+      <p>{{ content.location.parking }}</p>
+    </article>
+    <article>
+      <p class="eyebrow">Accessibility</p>
+      <h2>Plan with confidence</h2>
+      <p>{{ content.location.accessibility }}</p>
+    </article>
+    <article>
+      <p class="eyebrow">Need something else?</p>
+      <h2>Ask the brewery</h2>
+      <p>Use the dedicated contact page for location-related questions.</p>
+      <a class="text-link" routerLink="/contact">Contact Us</a>
+    </article>
+  </div>
+</section>

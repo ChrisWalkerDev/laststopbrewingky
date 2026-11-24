@@ -1,0 +1,78 @@
+<section class="hero">
+  <div class="hero-visual" role="img" aria-label="Brewery imagery placeholder">
+    <span>Taproom photography placeholder</span>
+  </div>
+  <div class="page-shell hero-content">
+    <p class="eyebrow">{{ content.heroEyebrow }}</p>
+    <h1>{{ content.heroTitle }}</h1>
+    <p class="hero-lede">{{ content.heroDescription }}</p>
+    <div class="button-row">
+      <a class="button" routerLink="/beers">Explore the beers</a>
+      <a class="text-link" routerLink="/visit">Plan your visit <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+  <p class="hero-coordinate">KENTUCKY · BREWERY DETAILS PENDING</p>
+</section>
+
+<section class="section">
+  <div class="page-shell introduction-grid">
+    <lsb-section-heading
+      eyebrow="The brewery"
+      title="Built for good beer and better company."
+      [description]="content.introduction"
+    />
+    <div class="intro-stat" aria-label="Content status">
+      <strong>01</strong>
+      <span>Verified story, imagery, and business details still to come.</span>
+    </div>
+  </div>
+</section>
+
+<section class="section section--deep">
+  <div class="page-shell">
+    <lsb-section-heading
+      eyebrow="On tap"
+      title="Beer with a place at the table."
+      description="The final catalogue will feature verified styles, tasting notes, ABV, availability, and photography."
+    />
+    <div class="beer-grid">
+      @for (beer of content.beers; track beer.slug) {
+        <article class="beer-card">
+          <div class="beer-art" aria-hidden="true">
+            <span>{{ $index + 1 }}</span>
+          </div>
+          <p class="eyebrow">{{ beer.style }}</p>
+          <h3>{{ beer.name }}</h3>
+          <p>{{ beer.description }}</p>
+          <span class="beer-status">{{ beer.status }}</span>
+        </article>
+      }
+    </div>
+    <a class="text-link all-beers-link" routerLink="/beers"
+      >View beer catalogue <span aria-hidden="true">→</span></a
+    >
+  </div>
+</section>
+
+<section class="split-feature">
+  <div class="split-image" role="img" aria-label="Brewery atmosphere photography placeholder">
+    <span>Atmosphere photography placeholder</span>
+  </div>
+  <div class="split-copy">
+    <p class="eyebrow">Food & gathering</p>
+    <h2>A menu made for the moment.</h2>
+    <p>
+      Present verified food, drinks, specials, dietary guidance, and service details in one
+      mobile-friendly place.
+    </p>
+    <a class="button button--outline" routerLink="/menu">See the menu framework</a>
+  </div>
+</section>
+
+<lsb-cta-panel
+  eyebrow="Your next stop"
+  title="Everything needed to plan a visit—once the real details are in."
+  description="Address, hours, directions, parking, accessibility, and contact details will live here when confirmed."
+  link="/visit"
+  linkLabel="Plan your visit"
+/>
