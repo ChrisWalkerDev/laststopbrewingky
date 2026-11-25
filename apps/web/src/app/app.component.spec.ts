@@ -48,6 +48,7 @@ describe('App', () => {
   };
 
   beforeEach(async () => {
+    sessionStorage.setItem('lastStopAgeVerified', 'true');
     viewportScroller = new RecordingViewportScroller();
 
     await TestBed.configureTestingModule({
@@ -60,6 +61,10 @@ describe('App', () => {
     }).compileComponents();
   });
 
+  afterEach(() => {
+    sessionStorage.clear();
+  });
+
   function bootstrapApplication(): void {
     document.body.append(document.createElement('lsb-root'));
     TestBed.inject(ApplicationRef).bootstrap(App);
@@ -67,10 +72,14 @@ describe('App', () => {
 
   it('creates the accessible application shell', async () => {
     const fixture = TestBed.createComponent(App);
+    await TestBed.inject(Router).navigateByUrl('/');
     await fixture.whenStable();
 
     const root = fixture.nativeElement as HTMLElement;
     expect(root.querySelector('header.site-header')).not.toBeNull();
+    expect(root.querySelector<HTMLImageElement>('.brand-logo')?.getAttribute('src')).toBe(
+      '/branding/logo.png',
+    );
     expect(root.querySelector('main#main-content')).not.toBeNull();
     expect(root.querySelector('footer.site-footer')).not.toBeNull();
     expect(root.querySelector<HTMLAnchorElement>('.skip-link')?.hash).toBe('#main-content');
@@ -78,6 +87,7 @@ describe('App', () => {
 
   it('exposes the primary destinations without an events route', async () => {
     const fixture = TestBed.createComponent(App);
+    await TestBed.inject(Router).navigateByUrl('/');
     await fixture.whenStable();
     const root = fixture.nativeElement as HTMLElement;
     const primaryLabels = Array.from(
@@ -113,6 +123,7 @@ describe('App', () => {
 
   it('uses About Us for primary and footer navigation', async () => {
     const fixture = TestBed.createComponent(App);
+    await TestBed.inject(Router).navigateByUrl('/');
     await fixture.whenStable();
 
     const root = fixture.nativeElement as HTMLElement;

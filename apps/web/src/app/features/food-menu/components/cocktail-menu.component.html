@@ -1,0 +1,33 @@
+<section class="section cocktail-menu" aria-labelledby="drinks-heading">
+  <div class="page-shell">
+    <header class="menu-heading">
+      <p class="eyebrow">From the bar</p>
+      <h2 id="drinks-heading">Cocktails & Drinks</h2>
+      <p>House favorites, bourbon-forward pours, and familiar cocktails made for a good stop.</p>
+    </header>
+
+    <section
+      class="cocktail-list"
+      [id]="section().id"
+      [attr.aria-labelledby]="section().id + '-heading'"
+    >
+      <header class="cocktail-list__heading">
+        <p class="eyebrow">{{ section().label }}</p>
+        <h3 [id]="section().id + '-heading'">{{ section().name }}</h3>
+      </header>
+      <ul class="cocktail-grid">
+        @for (item of section().items; track item.name) {
+          <li class="cocktail-item">
+            <div class="cocktail-item__heading">
+              <h4>{{ item.name }}</h4>
+              <span class="cocktail-item__price">{{ item.price }}</span>
+            </div>
+            @if (item.description) {
+              <p>{{ item.description }}</p>
+            }
+          </li>
+        }
+      </ul>
+    </section>
+  </div>
+</section>

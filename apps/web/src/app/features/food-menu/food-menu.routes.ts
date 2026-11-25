@@ -7,9 +7,9 @@ export const foodMenuRoutes: Routes = [
     component: FoodMenuPage,
     data: {
       seo: {
-        title: 'Food & Menu',
+        title: 'Food & Drinks',
         description:
-          'Preview Last Stop Brewing’s mobile-friendly food, drink, seasonal special, and dietary information structure.',
+          'Browse the burgers, starters, wings, sandwiches, cocktails, and drinks at Last Stop Brewing in Kentucky.',
         path: '/menu',
       },
     },

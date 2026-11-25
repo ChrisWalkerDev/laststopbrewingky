@@ -3,12 +3,16 @@
   margin-bottom: var(--space-7);
 }
 
+.eyebrow {
+  color: var(--section-heading-eyebrow-color, var(--color-accent));
+}
+
 h2 {
   margin-block: var(--space-2) var(--space-3);
 }
 
 p:last-child {
   max-width: 38rem;
-  color: var(--color-text-secondary);
+  color: var(--section-heading-description-color, var(--color-text-secondary));
   font-size: 1.08rem;
 }

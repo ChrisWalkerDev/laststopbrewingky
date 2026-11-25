@@ -1,58 +1,12 @@
 <lsb-page-hero
   eyebrow="The beer"
-  title="A catalogue ready for the real lineup."
-  description="Preview the information structure for year-round beers, seasonal releases, and limited batches. Product details remain explicitly unverified."
+  title="Our Beers"
+  description="Explore our current beer selection, featuring the brews we're pouring at the brewery. Our tap list changes, so check back to see what's available."
 />
 
-<section class="section">
-  <div class="page-shell">
-    <div class="catalogue-heading">
-      <div>
-        <p class="eyebrow">Current catalogue · placeholders</p>
-        <h2>Made to compare at a glance.</h2>
-      </div>
-      <p>
-        Style, ABV, IBU, tasting notes, availability, ingredients, and packaging can be connected to
-        a future CMS or structured content source.
-      </p>
-    </div>
-
-    <div class="beer-list">
-      @for (beer of content.beers; track beer.slug) {
-        <article>
-          <div class="beer-number" aria-hidden="true">0{{ $index + 1 }}</div>
-          <div class="beer-art placeholder-art">
-            <span>Product photography placeholder</span>
-          </div>
-          <div class="beer-copy">
-            <p class="eyebrow">{{ beer.style }}</p>
-            <h3>{{ beer.name }}</h3>
-            <p>{{ beer.description }}</p>
-            <dl>
-              <div>
-                <dt>ABV</dt>
-                <dd>{{ beer.abv ?? 'Pending' }}</dd>
-              </div>
-              <div>
-                <dt>IBU</dt>
-                <dd>{{ beer.ibu ?? 'Pending' }}</dd>
-              </div>
-              <div>
-                <dt>Availability</dt>
-                <dd>{{ beer.status }}</dd>
-              </div>
-            </dl>
-          </div>
-        </article>
-      }
-    </div>
+<section class="section beer-menu-section" aria-labelledby="beer-menu-heading">
+  <div class="page-shell beer-menu-section__inner">
+    <h2 id="beer-menu-heading" class="sr-only">Current beer menu</h2>
+    <lsb-untappd-beer-menu />
   </div>
 </section>
-
-<lsb-cta-panel
-  eyebrow="At the brewery"
-  title="What’s pouring is a live detail—not a guess."
-  description="The final catalogue can distinguish taproom availability, packaged beer, seasonal releases, and limited batches."
-  link="/visit"
-  linkLabel="Find the taproom"
-/>

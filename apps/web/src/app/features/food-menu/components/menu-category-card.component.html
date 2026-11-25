@@ -1,0 +1,46 @@
+@let category = section();
+
+<section
+  class="menu-card"
+  [class.menu-card--featured]="category.featured"
+  [id]="category.id"
+  [attr.aria-labelledby]="category.id + '-heading'"
+>
+  <header class="menu-card__header">
+    <div>
+      <p class="eyebrow">{{ category.label }}</p>
+      <h3 [id]="category.id + '-heading'">{{ category.name }}</h3>
+    </div>
+    @if (category.price) {
+      <span class="menu-card__section-price">{{ category.price }}</span>
+    }
+  </header>
+  @if (category.introduction) {
+    <p class="menu-card__introduction">{{ category.introduction }}</p>
+  }
+  <ul class="menu-items">
+    @for (item of category.items; track item.name) {
+      <li class="menu-item">
+        <div class="menu-item__heading">
+          <h4>{{ item.name }}</h4>
+          @if (item.price) {
+            <span class="menu-item__price">{{ item.price }}</span>
+          }
+        </div>
+        @if (item.description) {
+          <p>{{ item.description }}</p>
+        }
+      </li>
+    }
+  </ul>
+  @if (category.list) {
+    <div class="sauce-list">
+      <h4>Available sauces</h4>
+      <ul>
+        @for (sauce of category.list; track sauce) {
+          <li>{{ sauce }}</li>
+        }
+      </ul>
+    </div>
+  }
+</section>

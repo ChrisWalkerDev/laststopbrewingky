@@ -1,7 +1,8 @@
 .cta-panel {
-  padding-block: var(--space-9);
-  background: var(--color-brand-primary);
-  color: var(--color-text-inverse);
+  padding-block: clamp(var(--space-8), 8vw, var(--space-9));
+  border-top: 0.3rem solid var(--color-brand-primary);
+  background: var(--color-background-muted);
+  color: var(--color-text-primary);
 }
 
 .cta-panel__inner {
@@ -18,11 +19,11 @@ h2 {
 
 p:not(.eyebrow) {
   max-width: 38rem;
-  color: var(--color-text-inverse);
+  color: var(--color-text-secondary);
 }
 
 .eyebrow {
-  color: inherit;
+  color: var(--color-accent);
 }
 
 @media (max-width: 44rem) {

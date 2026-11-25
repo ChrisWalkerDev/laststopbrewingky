@@ -211,6 +211,17 @@ h3 {
   background: var(--color-background-muted);
 }
 
+.button--dark {
+  border-color: var(--color-brand-dark);
+  background: var(--color-brand-dark);
+  color: var(--color-brand-light);
+}
+
+.button--dark:hover {
+  border-color: var(--color-brand-primary);
+  background: var(--color-brand-primary);
+}
+
 .text-link {
   color: var(--color-accent);
   text-decoration-thickness: 1px;

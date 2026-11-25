@@ -31,9 +31,9 @@ export const visitContent: VisitContent = {
       'Find Last Stop Brewing in downtown Shelbyville. Open the map for turn-by-turn directions.',
     mapUrl:
       'https://www.google.com/maps/search/?api=1&query=Last%20Stop%20Brewing%2C%20525%20Main%20Street%2C%20Shelbyville%2C%20KY%2040065',
-    parking: 'Parking details pending verification.',
+    parking: 'Street Parking in the front and Small Parking lot in the back.',
     accessibility:
-      'Accessibility, step-free access, restroom, and accommodation details are pending verification.',
+      'Wheelchair Accessibile downstairs to brewery and restrooms - Event Space is upstairs',
   },
   hours: [
     { day: 'Sunday', dayIndex: 0, opensAt: '12 PM', closesAt: '12 AM' },

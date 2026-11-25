@@ -1,0 +1,64 @@
+<section class="live-music" aria-labelledby="live-music-title">
+  <div class="page-shell live-music__layout">
+    <div class="live-music__copy">
+      <p class="live-music__eyebrow">Live at Last Stop Brewing</p>
+      <h2 id="live-music-title">
+        <span>{{ event.titleLead }}</span>
+        {{ event.titleStatement }}
+      </h2>
+      <p class="live-music__intro">{{ event.intro }}</p>
+
+      <div class="live-music__schedule" aria-label="Weekly event schedule">
+        <span class="live-music__schedule-mark" aria-hidden="true"></span>
+        <div>
+          <strong>{{ event.schedule }}</strong>
+          <span>Weekly at Last Stop Brewing</span>
+        </div>
+      </div>
+
+      @if (event.performers || event.performanceTime) {
+        <dl class="live-music__details">
+          @if (event.performers) {
+            <div>
+              <dt>Featuring</dt>
+              <dd>{{ event.performers.join(', ') }}</dd>
+            </div>
+          }
+          @if (event.performanceTime) {
+            <div>
+              <dt>Performance time</dt>
+              <dd>{{ event.performanceTime }}</dd>
+            </div>
+          }
+        </dl>
+      }
+
+      <p class="live-music__closing">{{ event.closing }}</p>
+    </div>
+
+    <figure class="live-music__stage">
+      @if (event.photo; as photo) {
+        <img
+          class="live-music__photo"
+          [src]="photo.src"
+          [alt]="photo.alt"
+          width="900"
+          height="1100"
+          loading="lazy"
+        />
+      } @else {
+        <div class="live-music__stage-art" aria-hidden="true">
+          <span class="live-music__sound-ring live-music__sound-ring--one"></span>
+          <span class="live-music__sound-ring live-music__sound-ring--two"></span>
+          <div class="live-music__microphone">
+            <span class="live-music__microphone-head"></span>
+            <span class="live-music__microphone-body"></span>
+            <span class="live-music__microphone-stand"></span>
+          </div>
+          <img src="/branding/logo.png" alt="" width="256" height="256" />
+        </div>
+        <figcaption>Live performance photography coming soon</figcaption>
+      }
+    </figure>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+
+.untappd-menu {
+  width: 100%;
+  min-width: 0;
+}
+
+.untappd-menu__frame {
+  display: block;
+  width: 100%;
+  // Untappd does not provide a documented parent-frame resize protocol.
+  height: clamp(62rem, 105dvh, 90rem);
+  min-width: 0;
+  border: 0;
+  background: var(--color-brand-light);
+}
+
+.untappd-menu__fallback {
+  max-width: 52rem;
+  margin: 0 auto var(--space-5);
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.untappd-menu__fallback a {
+  color: var(--color-accent);
+  font-weight: 700;
+  text-underline-offset: 0.25rem;
+}
+
+@media (max-width: 48rem) {
+  .untappd-menu__frame {
+    height: 82rem;
+  }
+}

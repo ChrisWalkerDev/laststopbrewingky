@@ -1,0 +1,258 @@
+.live-music {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(var(--space-9), 9vw, var(--space-10));
+  border-top: 0.3rem solid var(--color-brand-primary);
+  background: var(--color-brand-dark);
+  color: var(--color-brand-light);
+}
+
+.live-music__layout {
+  position: relative;
+  display: grid;
+  align-items: center;
+  gap: clamp(var(--space-7), 8vw, var(--space-9));
+  grid-template-columns: minmax(0, 1.05fr) minmax(20rem, 0.95fr);
+}
+
+.live-music__copy {
+  grid-column: 2;
+}
+
+.live-music__eyebrow {
+  margin-bottom: var(--space-3);
+  color: var(--color-brand-light);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.live-music h2 {
+  max-width: 10ch;
+  margin-block: 0 var(--space-5);
+  color: var(--color-brand-light);
+  font-family: var(--font-body);
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 950;
+  letter-spacing: -0.065em;
+  line-height: 0.94;
+  text-transform: uppercase;
+}
+
+.live-music h2 span {
+  display: block;
+  color: var(--color-brand-primary);
+}
+
+.live-music__intro {
+  max-width: 42rem;
+  color: var(--color-text-inverse-muted);
+  font-size: clamp(1.08rem, 1.7vw, 1.22rem);
+}
+
+.live-music__schedule {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  width: fit-content;
+  max-width: 100%;
+  margin-block: var(--space-6);
+  padding: var(--space-4) var(--space-5);
+  border: 2px solid var(--color-brand-light);
+  background: var(--color-brand-primary);
+  box-shadow: 0.45rem 0.45rem 0 var(--color-brand-light);
+}
+
+.live-music__schedule-mark {
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  background: var(--color-brand-light);
+  box-shadow: 0 0 0 0.3rem rgb(254 254 254 / 25%);
+  flex: 0 0 auto;
+}
+
+.live-music__schedule div {
+  display: grid;
+}
+
+.live-music__schedule strong {
+  font-size: clamp(1.05rem, 2.2vw, 1.4rem);
+  letter-spacing: 0.06em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.live-music__schedule div span {
+  margin-top: var(--space-1);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.live-music__closing {
+  max-width: 38rem;
+  margin: 0;
+  color: var(--color-brand-light);
+  font-weight: 650;
+}
+
+.live-music__stage {
+  position: relative;
+  grid-column: 1;
+  grid-row: 1;
+  min-height: 34rem;
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid var(--color-border-inverse);
+  background:
+    radial-gradient(
+      circle at 50% 15%,
+      color-mix(in srgb, var(--color-brand-primary) 95%, transparent) 0,
+      transparent 48%
+    ),
+    linear-gradient(
+      150deg,
+      color-mix(in srgb, var(--color-brand-light) 14%, var(--color-brand-dark)),
+      var(--color-brand-dark) 65%
+    );
+}
+
+.live-music__photo,
+.live-music__stage-art {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+}
+
+.live-music__photo {
+  object-fit: cover;
+}
+
+.live-music__stage-art {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.live-music__stage-art img {
+  position: absolute;
+  bottom: var(--space-7);
+  width: min(54%, 14rem);
+  height: auto;
+  opacity: 0.92;
+}
+
+.live-music__sound-ring {
+  position: absolute;
+  width: 16rem;
+  aspect-ratio: 1;
+  border: 2px solid rgb(254 254 254 / 22%);
+  border-radius: 50%;
+}
+
+.live-music__sound-ring--two {
+  width: 22rem;
+  border-color: rgb(254 254 254 / 12%);
+}
+
+.live-music__microphone {
+  position: relative;
+  width: 4.2rem;
+  height: 13rem;
+  margin-bottom: 8rem;
+  transform: rotate(-10deg);
+}
+
+.live-music__microphone-head,
+.live-music__microphone-body,
+.live-music__microphone-stand {
+  position: absolute;
+  display: block;
+  background: var(--color-brand-light);
+}
+
+.live-music__microphone-head {
+  top: 0;
+  left: 0.25rem;
+  width: 3.7rem;
+  height: 5.2rem;
+  border-radius: 50% 50% 35% 35%;
+  background: repeating-linear-gradient(
+    0deg,
+    var(--color-brand-light) 0 0.3rem,
+    var(--color-brand-dark) 0.3rem 0.45rem
+  );
+}
+
+.live-music__microphone-body {
+  top: 4.3rem;
+  left: 1.55rem;
+  width: 1.1rem;
+  height: 6.5rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.live-music__microphone-stand {
+  top: 10rem;
+  left: -1rem;
+  width: 6.2rem;
+  height: 0.45rem;
+  border-radius: 999px;
+}
+
+.live-music__stage figcaption {
+  position: absolute;
+  right: var(--space-4);
+  bottom: var(--space-4);
+  left: var(--space-4);
+  padding: var(--space-3);
+  border-top: 0.2rem solid var(--color-brand-primary);
+  background: rgb(3 3 1 / 88%);
+  color: var(--color-brand-light);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@media (max-width: 60rem) {
+  .live-music__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .live-music__copy,
+  .live-music__stage {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .live-music__stage {
+    min-height: 28rem;
+  }
+}
+
+@media (max-width: 40rem) {
+  .live-music {
+    padding-block: var(--space-8);
+  }
+
+  .live-music h2 {
+    font-size: clamp(2.5rem, 13vw, 3.6rem);
+  }
+
+  .live-music__schedule {
+    align-items: flex-start;
+    width: 100%;
+    padding: var(--space-4);
+    box-shadow: 0.35rem 0.35rem 0 var(--color-brand-light);
+  }
+
+  .live-music__stage {
+    min-height: 25rem;
+  }
+}

@@ -1,0 +1,113 @@
+.cocktail-menu {
+  color: var(--color-text-inverse);
+  background: var(--color-brand-dark);
+}
+
+.menu-heading {
+  display: grid;
+  align-items: end;
+  gap: var(--space-5) var(--space-8);
+  margin-bottom: var(--space-8);
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.7fr);
+}
+
+.menu-heading .eyebrow {
+  grid-column: 1 / -1;
+}
+
+.menu-heading h2 {
+  margin: 0;
+}
+
+.menu-heading > p:last-child {
+  margin: 0;
+  color: var(--color-text-inverse-muted);
+}
+
+.menu-heading .eyebrow,
+.cocktail-list .eyebrow {
+  color: var(--color-text-inverse-muted);
+}
+
+.cocktail-list {
+  scroll-margin-top: var(--menu-anchor-offset, 4.25rem);
+  border-top: 0.5rem solid var(--color-accent);
+}
+
+.cocktail-list__heading {
+  padding-block: var(--space-6) var(--space-5);
+}
+
+h3 {
+  margin-block: var(--space-2) 0;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+}
+
+.cocktail-grid {
+  display: grid;
+  gap: 0 var(--space-8);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cocktail-item {
+  padding-block: var(--space-5);
+  border-top: 1px solid var(--color-border-inverse);
+}
+
+.cocktail-item__heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  line-height: 1.25;
+}
+
+.cocktail-item__price {
+  flex: 0 0 auto;
+  color: color-mix(in srgb, var(--color-brand-primary) 80%, var(--color-brand-light));
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.cocktail-item p {
+  max-width: 32rem;
+  margin: var(--space-2) 0 0;
+  color: var(--color-text-inverse-muted);
+  font-size: 0.88rem;
+}
+
+@media (max-width: 64rem) {
+  .cocktail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 48rem) {
+  .menu-heading {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-heading .eyebrow {
+    grid-column: auto;
+  }
+
+  .cocktail-item__heading {
+    gap: var(--space-2);
+  }
+}
+
+@media (max-width: 24rem) {
+  .cocktail-item__heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

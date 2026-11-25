@@ -1,0 +1,19 @@
+<div class="untappd-menu">
+  <p class="untappd-menu__fallback">
+    This menu is hosted externally by Untappd. If it does not display,
+    <a [href]="menuUrl" target="_blank" rel="noopener noreferrer">
+      open the current beer menu in a new tab </a
+    >.
+  </p>
+
+  <iframe
+    class="untappd-menu__frame"
+    [src]="trustedMenuUrl"
+    title="Current brewery beer menu powered by Untappd"
+    loading="lazy"
+    referrerpolicy="strict-origin-when-cross-origin"
+  >
+    The current beer menu is hosted by Untappd.
+    <a [href]="menuUrl" target="_blank" rel="noopener noreferrer">Open the menu in a new tab</a>.
+  </iframe>
+</div>

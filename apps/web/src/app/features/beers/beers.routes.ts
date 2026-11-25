@@ -9,7 +9,7 @@ export const beersRoutes: Routes = [
       seo: {
         title: 'Beers',
         description:
-          'Explore the content-ready beer catalogue framework for Last Stop Brewing, including styles and product details.',
+          'Explore the current beer selection on tap at Last Stop Brewing in Shelbyville, Kentucky.',
         path: '/beers',
       },
     },

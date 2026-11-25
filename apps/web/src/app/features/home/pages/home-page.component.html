@@ -1,6 +1,12 @@
 <section class="hero">
-  <div class="hero-visual" role="img" aria-label="Brewery imagery placeholder">
-    <span>Taproom photography placeholder</span>
+  <div class="hero-visual">
+    <img
+      [src]="content.heroImage.src"
+      [alt]="content.heroImage.alt"
+      width="1280"
+      height="768"
+      fetchpriority="high"
+    />
   </div>
   <div class="page-shell hero-content">
     <p class="eyebrow">{{ content.heroEyebrow }}</p>
@@ -11,10 +17,9 @@
       <a class="text-link" routerLink="/visit">Plan your visit <span aria-hidden="true">→</span></a>
     </div>
   </div>
-  <p class="hero-coordinate">KENTUCKY · BREWERY DETAILS PENDING</p>
 </section>
 
-<section class="section">
+<section class="section introduction-section">
   <div class="page-shell introduction-grid">
     <lsb-section-heading
       eyebrow="The brewery"
@@ -28,23 +33,38 @@
   </div>
 </section>
 
-<section class="section section--deep">
+<section class="section section--deep beer-section">
   <div class="page-shell">
     <lsb-section-heading
-      eyebrow="On tap"
+      eyebrow="Our beer"
       title="Beer with a place at the table."
-      description="The final catalogue will feature verified styles, tasting notes, ABV, availability, and photography."
+      description="Meet the first featured beer in our growing lineup."
     />
     <div class="beer-grid">
       @for (beer of content.beers; track beer.slug) {
         <article class="beer-card">
-          <div class="beer-art" aria-hidden="true">
-            <span>{{ $index + 1 }}</span>
+          <div class="beer-art">
+            @if (beer.image; as image) {
+              <img
+                [src]="image.src"
+                [alt]="image.alt"
+                [style.object-position]="image.objectPosition ?? 'center'"
+                width="1000"
+                height="1250"
+                loading="lazy"
+              />
+            } @else {
+              <span aria-hidden="true">{{ $index + 1 }}</span>
+            }
           </div>
-          <p class="eyebrow">{{ beer.style }}</p>
-          <h3>{{ beer.name }}</h3>
-          <p>{{ beer.description }}</p>
-          <span class="beer-status">{{ beer.status }}</span>
+          <div class="beer-card__copy">
+            <p class="eyebrow">{{ beer.style }}</p>
+            <h3>{{ beer.name }}</h3>
+            @if (beer.description) {
+              <p>{{ beer.description }}</p>
+            }
+            <span class="beer-status">{{ beer.status }}</span>
+          </div>
         </article>
       }
     </div>
@@ -55,9 +75,6 @@
 </section>
 
 <section class="split-feature">
-  <div class="split-image" role="img" aria-label="Brewery atmosphere photography placeholder">
-    <span>Atmosphere photography placeholder</span>
-  </div>
   <div class="split-copy">
     <p class="eyebrow">Food & gathering</p>
     <h2>A menu made for the moment.</h2>
@@ -67,12 +84,27 @@
     </p>
     <a class="button button--outline" routerLink="/menu">See the menu framework</a>
   </div>
+  <div class="split-image">
+    <img
+      [src]="content.atmosphereImage.src"
+      [alt]="content.atmosphereImage.alt"
+      width="1800"
+      height="1150"
+      loading="lazy"
+    />
+  </div>
 </section>
+
+<lsb-event-space-section />
+
+<lsb-trivia-tuesday-section />
+
+<lsb-live-original-music-section />
 
 <lsb-cta-panel
   eyebrow="Your next stop"
-  title="Everything needed to plan a visit—once the real details are in."
-  description="Address, hours, directions, parking, accessibility, and contact details will live here when confirmed."
+  title="Everything needed to plan a visit"
+  description="Address, hours, directions, parking, and accessibility."
   link="/visit"
   linkLabel="Plan your visit"
 />

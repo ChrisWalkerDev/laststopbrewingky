@@ -1,48 +1,57 @@
-<lsb-page-hero
-  eyebrow="Food & Menu"
-  title="Easy to read. Ready to update."
-  description="A mobile-first menu structure for food, drinks, specials, and reviewed allergen guidance—without publishing unverified offerings."
-/>
-
-<section class="section">
-  <div class="page-shell menu-layout">
-    <aside aria-label="Menu information">
-      <p class="eyebrow">Menu status</p>
-      <h2>Details pending</h2>
-      <p>
-        Prices, service periods, seasonal specials, availability, and dietary guidance will appear
-        after brewery approval.
+<section class="menu-hero" aria-labelledby="menu-title">
+  <div class="page-shell menu-hero__inner">
+    <div class="menu-hero__copy">
+      <p class="eyebrow">The kitchen & bar</p>
+      <h1 id="menu-title">Food <span>&</span> Drinks</h1>
+      <p class="menu-hero__lede">
+        Burgers stacked for the hungry, cocktails mixed for the occasion, and plenty worth stopping
+        in for.
       </p>
-      <p class="menu-note">
-        Allergen information is safety-critical. It must be reviewed and maintained by the brewery
-        and must not be represented by a generic disclaimer.
-      </p>
-    </aside>
+    </div>
+    <img
+      class="menu-hero__logo"
+      src="/branding/logo.png"
+      alt=""
+      width="600"
+      height="600"
+      decoding="async"
+    />
+  </div>
+</section>
 
-    <div class="menu-sections">
-      @for (section of content.menuSections; track section.name) {
-        <section>
-          <p class="eyebrow">0{{ $index + 1 }}</p>
-          <h3>{{ section.name }}</h3>
-          <p>{{ section.description }}</p>
-          <ul>
-            @for (item of section.items; track item) {
-              <li>
-                <span>{{ item }}</span>
-                <span aria-label="Price pending">—</span>
-              </li>
-            }
-          </ul>
-        </section>
+<nav #categoryNavigationElement class="menu-navigation" aria-label="Menu categories">
+  <div class="page-shell menu-navigation__inner">
+    @for (link of menuNavigation; track link.fragment) {
+      <a routerLink="/menu" [fragment]="link.fragment">{{ link.label }}</a>
+    }
+  </div>
+</nav>
+
+<section class="section food-menu" aria-labelledby="food-heading">
+  <div class="page-shell">
+    <header class="menu-heading">
+      <p class="eyebrow">From the kitchen</p>
+      <h2 id="food-heading">Food Menu</h2>
+      <p>Find your favorite, then settle in. All items are served at Last Stop Brewing.</p>
+    </header>
+
+    <div class="food-grid">
+      @for (section of foodSections; track section.id) {
+        <lsb-menu-category-card
+          [class.menu-category-card--featured]="section.featured"
+          [section]="section"
+        />
       }
     </div>
   </div>
 </section>
 
-<lsb-cta-panel
-  eyebrow="Questions"
-  title="Keep the menu accurate where it matters most."
-  description="Connect final contact and service information so visitors can confirm availability and ask approved dietary questions."
-  link="/visit"
-  linkLabel="Visit information"
-/>
+<lsb-cocktail-menu [section]="cocktailSection" />
+
+<section class="menu-closing" aria-labelledby="menu-closing-heading">
+  <div class="page-shell menu-closing__inner">
+    <p class="eyebrow">Make it your next stop</p>
+    <h2 id="menu-closing-heading">Food, drinks & good company.</h2>
+    <a class="button button--light" routerLink="/visit">Plan your visit</a>
+  </div>
+</section>

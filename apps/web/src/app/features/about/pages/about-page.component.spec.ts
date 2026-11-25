@@ -58,15 +58,42 @@ describe('AboutPage', () => {
     expect(new Set(renderedNames).size).toBe(6);
   });
 
-  it('uses the existing Visit Us route and clearly labeled portrait placeholders', async () => {
+  it('shows available team portraits and clearly labels missing portraits', async () => {
     const fixture = TestBed.createComponent(AboutPage);
     await fixture.whenStable();
     const root = fixture.nativeElement as HTMLElement;
+    const jonPortrait = root.querySelector<HTMLImageElement>(
+      '.owners-section lsb-team-member-card:nth-child(1) img',
+    );
+    const mikePortrait = root.querySelector<HTMLImageElement>(
+      '.owners-section lsb-team-member-card:nth-child(2) img',
+    );
+    const hunterPortrait = root.querySelector<HTMLImageElement>(
+      '.owners-section lsb-team-member-card:nth-child(3) img',
+    );
+    const erinPortrait = root.querySelector<HTMLImageElement>(
+      '.owners-section lsb-team-member-card:nth-child(4) img',
+    );
+    const brewerPortrait = root.querySelector<HTMLImageElement>(
+      '.brewery-team-section lsb-team-member-card:nth-child(2) img',
+    );
 
     expect(root.querySelector<HTMLAnchorElement>('.about-closing a')?.getAttribute('href')).toBe(
       '/visit',
     );
-    expect(root.querySelectorAll('.team-member__placeholder')).toHaveLength(6);
-    expect(root.textContent?.match(/Portrait coming soon/g)).toHaveLength(6);
+    expect(jonPortrait?.getAttribute('src')).toBe('/images/about/jon-fee-20261124.webp');
+    expect(jonPortrait?.getAttribute('alt')).toBe('Jon Fee, co-owner of Last Stop Brewing');
+    expect(mikePortrait?.getAttribute('src')).toBe('/images/about/mike-sims-20261124.webp');
+    expect(mikePortrait?.getAttribute('alt')).toBe('Mike Sims, co-owner of Last Stop Brewing');
+    expect(hunterPortrait?.getAttribute('src')).toBe('/images/about/hunter-monarch-20261124.webp');
+    expect(hunterPortrait?.getAttribute('alt')).toBe(
+      'Hunter Monarch, co-owner of Last Stop Brewing',
+    );
+    expect(erinPortrait?.getAttribute('src')).toBe('/images/about/erin-pippin.webp');
+    expect(erinPortrait?.getAttribute('alt')).toBe('Erin Pippin, co-owner of Last Stop Brewing');
+    expect(brewerPortrait?.getAttribute('src')).toBe('/images/about/hunter-freeman-20261124.webp');
+    expect(brewerPortrait?.getAttribute('alt')).toBe('Hunter Freeman, brewer at Last Stop Brewing');
+    expect(root.querySelectorAll('.team-member__placeholder')).toHaveLength(1);
+    expect(root.textContent?.match(/Portrait coming soon/g)).toHaveLength(1);
   });
 });

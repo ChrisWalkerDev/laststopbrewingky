@@ -1,0 +1,32 @@
+<main class="age-verification">
+  <section class="age-verification__panel" aria-labelledby="age-verification-title">
+    <img
+      class="age-verification__logo"
+      src="/branding/logo.png"
+      alt="Last Stop Brewing"
+      width="600"
+      height="600"
+    />
+
+    <p class="eyebrow">Welcome to Last Stop Brewing</p>
+    <h1 id="age-verification-title">Are you 21 or older?</h1>
+    <p class="age-verification__support">
+      You must be at least 21 years old to enter this website.
+    </p>
+
+    <div class="age-verification__actions">
+      <button class="button button--confirm" type="button" (click)="confirmAge()">
+        YES — I am 21 or older
+      </button>
+      <button class="button button--reject" type="button" (click)="rejectAge()">
+        NO — I am under 21
+      </button>
+    </div>
+
+    @if (rejected()) {
+      <p class="age-verification__message" role="status">
+        Sorry, you must be 21 or older to enter this website.
+      </p>
+    }
+  </section>
+</main>
