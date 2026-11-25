@@ -5,15 +5,22 @@
 Create or configure a Cloudflare Pages project with Git integration:
 
 1. Production branch: `main`.
-2. Install command: `npm ci`.
-3. Build command: `npm run build:web:cloudflare`.
-4. Build output directory: `apps/web/dist/web/browser`.
-5. Node.js compatibility/build variable: `24.15.0`.
+2. Framework preset: `None`.
+3. Root directory: `/`.
+4. Install command: `npm ci`.
+5. Build command: `npm run build:web:cloudflare`.
+6. Build output directory: `apps/web/dist/web/browser`.
+7. Node.js compatibility/build variable: `NODE_VERSION=24.15.0`.
 
 The browser output directory was verified from the actual Angular 22 application
 build; it is not inferred from a generic Angular default. Preview builds use the
 branch environment, and the main branch uses `production`. Cloudflare should not
 be asked to deploy the Worker from the Pages project.
+
+The repository also contains a root `wrangler.jsonc` with the verified Pages
+output directory for Wrangler-based direct uploads. Cloudflare's native Git
+integration does not read build commands from this file, so the settings above
+must be entered when connecting the repository.
 
 `APP_API_BASE_URL` may be set to `/api` for same-origin routing or an exact public
 HTTPS API URL. If an external API is chosen, update CSP `connect-src` and the

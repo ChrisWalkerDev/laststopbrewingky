@@ -10,6 +10,18 @@ describe('HomePage', () => {
     }).compileComponents();
   });
 
+  it('links the hero food menu button to the food menu page', async () => {
+    const fixture = TestBed.createComponent(HomePage);
+    await fixture.whenStable();
+    const root = fixture.nativeElement as HTMLElement;
+    const foodMenuButton = Array.from(
+      root.querySelectorAll<HTMLAnchorElement>('.hero .button'),
+    ).find((link) => link.textContent?.trim() === 'View the food menu');
+
+    expect(foodMenuButton).toBeDefined();
+    expect(foodMenuButton?.getAttribute('href')).toBe('/menu');
+  });
+
   it('includes the event space section after the menu and beer sections', async () => {
     const fixture = TestBed.createComponent(HomePage);
     await fixture.whenStable();

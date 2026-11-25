@@ -73,8 +73,12 @@ Format files with `npm run format`.
 
 No deployment is performed by this repository.
 
-Configure a Pages Git project with:
+The repository includes a root `wrangler.jsonc` for direct Pages uploads and a
+`.node-version` file matching the supported Node runtime. Connect the GitHub
+repository as a Cloudflare Pages project with:
 
+- Framework preset: `None`
+- Root directory: `/`
 - Build command: `npm run build:web:cloudflare`
 - Build output directory: `apps/web/dist/web/browser`
 - Production branch: `main`
