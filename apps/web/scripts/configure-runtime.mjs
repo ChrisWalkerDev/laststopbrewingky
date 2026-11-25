@@ -2,9 +2,9 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 
 const outputFile = new URL('../dist/web/browser/app-config.json', import.meta.url);
 const outputDirectory = new URL('../dist/web/browser/', import.meta.url);
+const buildBranch = process.env.WORKERS_CI_BRANCH ?? process.env.CF_PAGES_BRANCH;
 const environment =
-  process.env.APP_ENVIRONMENT ??
-  (process.env.CF_PAGES_BRANCH === 'main' ? 'production' : 'preview');
+  process.env.APP_ENVIRONMENT ?? (buildBranch === 'main' ? 'production' : 'preview');
 const apiBaseUrl = process.env.APP_API_BASE_URL ?? '/api';
 const contactEndpoint = process.env.APP_CONTACT_ENDPOINT ?? '';
 const siteUrl = process.env.APP_SITE_URL;
@@ -83,7 +83,7 @@ if (environment === 'production' && contactUrl) {
     `connect-src 'self' ${contactUrl.origin};`,
   );
   if (updatedHeaders === headers) {
-    throw new Error('Unable to add the configured contact API origin to the Pages CSP.');
+    throw new Error('Unable to add the configured contact API origin to the asset CSP.');
   }
   await writeFile(headersFile, updatedHeaders, 'utf8');
 }

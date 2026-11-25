@@ -20,7 +20,8 @@ authorizes or validates for the server.
 - Contact form payloads are built from an explicit five-field allowlist, trimmed
   before submission, and sent without credentials. Local and preview modes use
   a deterministic mock. Production builds require an external HTTPS endpoint
-  and add its origin to Pages CSP; the production mock configuration is rejected.
+  and add its origin to the web Worker's asset CSP; the production mock
+  configuration is rejected.
 - API responses use `application/json`, `Cache-Control: no-store`, and
   RFC 9457-shaped errors.
 - No secrets or privileged tokens are used by the client or committed.
@@ -31,9 +32,9 @@ authorizes or validates for the server.
 - Canonical and sitemap generation requires an explicitly configured HTTPS
   production hostname, preventing accidental indexing under guessed URLs.
 
-The Pages CSP currently permits inline styles because Angular Material and dynamic
-component styling may emit them. It does not permit inline scripts. Test any
-future style/CSP tightening in a preview before removal.
+The web asset CSP currently permits inline styles because Angular Material and
+dynamic component styling may emit them. It does not permit inline scripts. Test
+any future style/CSP tightening in a preview before removal.
 
 ## Authentication and CSRF
 

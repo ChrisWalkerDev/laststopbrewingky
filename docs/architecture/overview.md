@@ -61,10 +61,12 @@ public API used by Home for beer highlights.
 
 ## Runtime model
 
-The browser app is statically rendered CSR output deployed to Cloudflare Pages.
+The browser app is statically rendered CSR output deployed through Cloudflare
+Workers Static Assets.
 Signals and `OnPush` components are used for local synchronous state. RxJS remains
 available for cancellable HTTP and event composition. API business logic is owned
-by a separately deployed Worker, avoiding Pages Functions duplication.
+by a separately deployed Worker, keeping the API release boundary independent
+from the web asset deployment.
 
 Public runtime configuration is loaded from `app-config.json` before Angular
 bootstrap. Configuration files are browser-visible by design and must never hold

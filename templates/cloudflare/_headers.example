@@ -1,6 +1,6 @@
-# Cloudflare Pages _headers starter template.
+# Cloudflare Workers Static Assets _headers starter template.
 # Copy/adapt to the deployed site's public/_headers or configured build output.
-# Confirm the actual output directory and Pages deployment mode first.
+# Confirm the actual Worker assets directory before deployment.
 
  /*
   X-Content-Type-Options: nosniff

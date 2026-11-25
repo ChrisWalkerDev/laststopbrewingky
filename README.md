@@ -69,24 +69,28 @@ npm run security:check
 Run everything except the vulnerability audit with `npm run quality:check`.
 Format files with `npm run format`.
 
-## Cloudflare Pages
+## Cloudflare Workers Static Assets
 
 No deployment is performed by this repository.
 
-The repository includes a root `wrangler.jsonc` for direct Pages uploads and a
-`.node-version` file matching the supported Node runtime. Connect the GitHub
-repository as a Cloudflare Pages project with:
+The repository includes a root `wrangler.jsonc` that serves the Angular browser
+output through a Cloudflare Worker and a `.node-version` file matching the
+supported Node runtime. Connect the GitHub repository to a Cloudflare Worker
+with Workers Builds using:
 
 - Framework preset: `None`
 - Root directory: `/`
 - Build command: `npm run build:web:cloudflare`
-- Build output directory: `apps/web/dist/web/browser`
+- Deploy command: `npx wrangler deploy`
+- Preview command: `npx wrangler preview`
 - Production branch: `main`
 - Node version: `24.15.0`
 - Install command: `npm ci`
 
-The build reads the Cloudflare branch at build time to label public runtime
-configuration as `production` or `preview`. Optionally set
+The Worker reads `apps/web/dist/web/browser` from the root `wrangler.jsonc`.
+Workers Static Assets supports the existing SPA fallback, `_headers`, and
+`_redirects` files. The build reads the Workers Builds branch at build time to
+label public runtime configuration as `production` or `preview`. Optionally set
 `APP_API_BASE_URL` to a public, absolute API origin or a same-origin path. Set
 `APP_SITE_URL` to the verified HTTPS production hostname to generate canonical
 URLs, `sitemap.xml`, and the sitemap declaration in `robots.txt`. Production

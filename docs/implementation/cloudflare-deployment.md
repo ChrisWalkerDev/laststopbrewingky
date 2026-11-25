@@ -1,26 +1,30 @@
 # Cloudflare deployment
 
-## Pages
+## Web Worker with Static Assets
 
-Create or configure a Cloudflare Pages project with Git integration:
+Create or configure a Cloudflare Worker with Workers Builds:
 
 1. Production branch: `main`.
 2. Framework preset: `None`.
 3. Root directory: `/`.
 4. Install command: `npm ci`.
 5. Build command: `npm run build:web:cloudflare`.
-6. Build output directory: `apps/web/dist/web/browser`.
-7. Node.js compatibility/build variable: `NODE_VERSION=24.15.0`.
+6. Deploy command: `npx wrangler deploy`.
+7. Preview command: `npx wrangler preview`.
+8. Node.js compatibility/build variable: `NODE_VERSION=24.15.0`.
 
 The browser output directory was verified from the actual Angular 22 application
-build; it is not inferred from a generic Angular default. Preview builds use the
-branch environment, and the main branch uses `production`. Cloudflare should not
-be asked to deploy the Worker from the Pages project.
+build; it is not inferred from a generic Angular default. The root
+`wrangler.jsonc` points the Worker asset configuration at
+`apps/web/dist/web/browser` and enables single-page-application fallback
+handling. Workers Static Assets serves the repository's existing `_headers` and
+`_redirects` files.
 
-The repository also contains a root `wrangler.jsonc` with the verified Pages
-output directory for Wrangler-based direct uploads. Cloudflare's native Git
-integration does not read build commands from this file, so the settings above
-must be entered when connecting the repository.
+Workers Builds provides `WORKERS_CI_BRANCH` during builds. The build script uses
+it to select `production` for `main`; all other branches use `preview`.
+`APP_ENVIRONMENT` can explicitly override that selection for controlled builds.
+The separately deployed API Worker remains independent and should not be
+deployed by this web build.
 
 `APP_API_BASE_URL` may be set to `/api` for same-origin routing or an exact public
 HTTPS API URL. If an external API is chosen, update CSP `connect-src` and the
@@ -39,7 +43,8 @@ The `/contact` form uses runtime-selected submission implementations:
 - Production builds require `APP_CONTACT_ENDPOINT` to be an absolute HTTPS
   contact endpoint on the eventual external API. They generate contact mode
   `http`; a production mock is rejected.
-- The build adds only that endpoint's origin to Pages CSP `connect-src`.
+- The build adds only that endpoint's origin to the web Worker's asset CSP
+  `connect-src`.
 
 `APP_CONTACT_ENDPOINT` is public configuration, not a secret. Do not place an
 API token, private key, or credential in it. The endpoint is expected to accept
@@ -86,7 +91,7 @@ cookies or authentication, its CSRF and credentialed-CORS requirements need a
 separate security review. All browser validation is for usability only and is
 not a security boundary.
 
-## Worker
+## API Worker
 
 The Worker is an independent deployment:
 

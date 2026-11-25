@@ -3,26 +3,27 @@
 No deployment script in this repository authenticates to or modifies a live
 Cloudflare account.
 
-## Pages
+## Web Worker with Static Assets
 
-Use Git integration or a direct-upload workflow with these settings:
+Use Workers Builds with these settings:
 
 - Install command: `npm ci`
 - Build command: `npm run build:web:cloudflare`
-- Build output directory: `apps/web/dist/web/browser`
+- Deploy command: `npx wrangler deploy`
+- Preview command: `npx wrangler preview`
 - Node version: `24.15.0`
 
 `apps/web/public` is copied into the Angular browser output. It contains runtime
 configuration, the CSP and security headers, and the SPA fallback. Verify the
 headers against a preview deployment before production enforcement.
 
-The root `wrangler.jsonc` identifies the Angular browser output for Wrangler-based
-direct uploads. It does not replace the build settings in a Pages Git project.
-For the first production build, configure the public values documented in
+The root `wrangler.jsonc` identifies the Angular browser output as Worker static
+assets and configures single-page-application fallback behavior. For the first
+production build, configure the public values documented in
 `docs/implementation/cloudflare-deployment.md`; production intentionally fails
 when the real contact endpoint has not been configured.
 
-## Worker
+## API Worker
 
 The API is independently owned in `apps/api` and deploys from that directory:
 
